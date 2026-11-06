@@ -1,0 +1,64 @@
+{
+  "auditor_sha256": "5a05a15e3da8233b528a1d591591335882b748fa3fd9522e03c3ad910dc0e303",
+  "baseline_checker_sha256": "283ae0fc19bc0e69c88ace31dedc67cbb171b46083c824b484c120626d783b0a",
+  "candidate_checker_sha256": "f5980acbe2b41c6948b1b1ed0206e66c6aca393b1fb9e4a150cc2b0471838806",
+  "cases": 5,
+  "execution_scope": "The original 35-case suite was not rerun. One valid-stdin regression evaluated 144 basis pairs and reused the prior positive output as its expected result.",
+  "only_source_delta": "Two-line explicit sys.stdin is None guard raising OSError",
+  "outcomes": [
+    {
+      "case": "closed_fd0",
+      "error_code": "file_io",
+      "exit_code": 2,
+      "passed": true,
+      "status": "input_error",
+      "stderr_empty": true
+    },
+    {
+      "case": "empty_readable_stdin",
+      "error_code": "json_syntax",
+      "exit_code": 2,
+      "passed": true,
+      "status": "invalid_certificate",
+      "stderr_empty": true
+    },
+    {
+      "case": "missing_file",
+      "error_code": "file_io",
+      "exit_code": 2,
+      "passed": true,
+      "status": "input_error",
+      "stderr_empty": true
+    },
+    {
+      "case": "directory_path",
+      "error_code": "file_io",
+      "exit_code": 2,
+      "passed": true,
+      "status": "input_error",
+      "stderr_empty": true
+    },
+    {
+      "case": "valid_stdin",
+      "exit_code": 0,
+      "passed": true,
+      "status": "verified",
+      "stderr_empty": true
+    }
+  ],
+  "passed": true,
+  "retained_results_sha256": "aab1b846ef3b9b7349582171f0bdfd98332b2bf12a06fbd828e272238a4d2035",
+  "review": "Separate Astra High AI agent; five focused CLI cases executed once.",
+  "runtime": {
+    "isolated": true,
+    "no_site": true,
+    "non_stdlib_modules": [],
+    "os": "Linux",
+    "python": "3.14.8"
+  },
+  "valid_stdin_exact_retained_stdout_sha256": "fa587a53a9f6295623752d81b4a3859188964517e7acb8df6ac05398691080de",
+  "verification_version": 1,
+  "version": "0.1.1",
+  "whole_module_ast_equal_after_guard_removal": true,
+  "whole_source_bytes_equal_after_guard_removal": true
+}

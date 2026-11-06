@@ -17,7 +17,7 @@ python3 -I -S -B run_checks.py --output /tmp/new-gf12-checks
 
 The third command intentionally returns exit 1 with the witness left=1, right=1, expected=1, actual=0. The test driver expects this failure and verifies it. Its output directory must be new. Use `-` instead of a filename to read a certificate from stdin. `-I -S` isolates the interpreter and disables site packages; the JSON report records that execution context.
 
-Exit codes are 0 for a verified identity, 1 for a semantic mismatch, and 2 for malformed/unsupported input or a file error. Reports include the first mismatching basis pair, expected and actual products, their XOR difference, and the total mismatch count. Every well-formed certificate is evaluated on all 144 basis pairs. SHA-256 values identify the input and canonical JSON; acceptance never depends on an allowlisted digest. Reordered terms are accepted.
+Exit codes are 0 for a verified identity, 1 for a semantic mismatch, and 2 for malformed/unsupported input or an input error. Unavailable stdin returns `input_error` with code `file_io` and message `Standard input is unavailable`. Reports include the first mismatching basis pair, expected and actual products, their XOR difference, and the total mismatch count. Every well-formed certificate is evaluated on all 144 basis pairs. SHA-256 values identify the input and canonical JSON; acceptance never depends on an allowlisted digest. Reordered terms are accepted.
 
 ## Fixed schema
 
@@ -46,7 +46,7 @@ For each pair of basis elements, the checker evaluates the parity-product tensor
 
 Quantum adapters require separate validation of relative phases, measurement branches, scratch cleanup, compiled circuit identity, gate counts and hardware behavior. The retained quantum receipts provide historical context. `PROOF.md` explains the classical argument and the frozen corruption witnesses.
 
-The 35 frozen cases cover retained and reversed positives, three semantic corruptions and 30 malformed or unsupported inputs. `fixtures/FROZEN_CASES.json` was written before checker implementation or execution. `PACKAGE_MANIFEST.json` pins the package files. `VERIFICATION.md` and `VERIFICATION.json` bind the accepted test results to the unchanged checker, driver and fixtures in this documentation revision.
+The 35 frozen cases cover retained and reversed positives, three semantic corruptions and 30 malformed or unsupported inputs. `fixtures/FROZEN_CASES.json` was written before checker implementation or execution. `PACKAGE_MANIFEST.json` pins the package files. Version 0.1.1 adds a two-line guard for unavailable stdin, verified with five focused CLI checks. `VERIFICATION.md` distinguishes that maintenance check from the original 35-case run and records the unchanged arithmetic, parser, driver and fixtures. See `CLI_REGRESSIONS.md` for reproduction commands.
 
 ## Provenance and license
 

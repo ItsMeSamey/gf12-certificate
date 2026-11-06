@@ -133,6 +133,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         if args.certificate == "-":
+            if sys.stdin is None:
+                raise OSError("Standard input is unavailable")
             raw = sys.stdin.buffer.read(MAX_INPUT_BYTES + 1)
         else:
             with Path(args.certificate).open("rb") as stream:
