@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "construction": "fixed42term GF(2^12) polynomial0x1053 little-endian",
+  "certificate_sha256": "35ae0ded19965326e1744d27a6dead67b26768cec3247ed789ba03f429f1dd90",
+  "max_input_bytes": 16384,
+  "exact_term_count": 42,
+  "cases": [
+    {
+      "name": "retained",
+      "path": "fixtures/retained.json",
+      "sha256": "35ae0ded19965326e1744d27a6dead67b26768cec3247ed789ba03f429f1dd90",
+      "expected_status": "verified"
+    },
+    {
+      "name": "reversed",
+      "path": "fixtures/reversed.json",
+      "sha256": "1c2c4f6895f3e2479e6b526d8f051f71451d5d8c272fb2bea67284ab13e67119",
+      "expected_status": "verified"
+    },
+    {
+      "name": "output_bit",
+      "path": "fixtures/output_bit.json",
+      "sha256": "b469270d2d1b7d70702bb472f4c7a435d6f0bc048a7d02f596779367aef0aaff",
+      "expected_status": "semantic_failure",
+      "expected_witness": {
+        "left": 1,
+        "right": 1,
+        "expected": 1,
+        "actual": 0,
+        "difference": 1
+      },
+      "reason": "Term0 input masks both include bit0; output coefficient changes by1."
+    },
+    {
+      "name": "input_bit",
+      "path": "fixtures/input_bit.json",
+      "sha256": "e7278edd0c847812649bc16a26aad28767dafeaac73119ae9f305b2e184102e2",
+      "expected_status": "semantic_failure",
+      "expected_witness": {
+        "left": 2,
+        "right": 1,
+        "expected": 2,
+        "actual": 1956,
+        "difference": 1958
+      },
+      "reason": "Term0 left bit1 toggles, right bit0 is1; delta c0=1958."
+    },
+    {
+      "name": "duplicate_term",
+      "path": "fixtures/duplicate_term.json",
+      "sha256": "be78c0242fbda6515d67e9c8b56dddd8de613ff8ccb3b24ecfd9fbfbc8ed4e7e",
+      "expected_status": "semantic_failure",
+      "expected_witness": {
+        "left": 1,
+        "right": 1,
+        "expected": 1,
+        "actual": 1959,
+        "difference": 1958
+      },
+      "reason": "At basis00 original term0 contributes1958; replacement term1 has left/right bit0 unset, proving distinct tensors."
+    },
+    {
+      "name": "modulus",
+      "path": "fixtures/modulus.json",
+      "sha256": "cdc7a684e621fe5d380e38a0ef4ce5811591d653cd93698e52691768ed3eae3d",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "degree",
+      "path": "fixtures/degree.json",
+      "sha256": "108e94c649b5e9091ef19db35efc3494b5662d37db538acbcf50c8cad028cff5",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "bit_order",
+      "path": "fixtures/bit_order.json",
+      "sha256": "3f9d6b3249f577e63ff9ee531c680bccc7d7be897390d901f3a8542ea690d645",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "basis",
+      "path": "fixtures/basis.json",
+      "sha256": "7e2ff85a8b9450f551af9bdc25141fa946dabbbb86f86827046e4389b001310d",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "version",
+      "path": "fixtures/version.json",
+      "sha256": "e4888acc8142cb3d37948f030c30a71f5cb22172d175496698bef2ea96f53e58",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "negative_mask",
+      "path": "fixtures/negative_mask.json",
+      "sha256": "b9db6f012e259119ece7d6e1bd953680888ee697c8898a0ad9dffe4c27e21ed6",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "large_mask",
+      "path": "fixtures/large_mask.json",
+      "sha256": "b6c3a55fc8ebc7b3e0afd59c8f19a2c7cf02f3876c388f97170fac37853f0cd2",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "boolean_mask",
+      "path": "fixtures/boolean_mask.json",
+      "sha256": "da69e84cb6133074fc5411889ede0bf96d8d215cca3b23df9b500540eb3812c4",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "float_mask",
+      "path": "fixtures/float_mask.json",
+      "sha256": "9a47aae34eaf2c370e76cb4a6dab4070cc04d5f3dc283d954df90f1c4a9368f5",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "string_mask",
+      "path": "fixtures/string_mask.json",
+      "sha256": "1cd9b940205cdbd3307c58b9823c58d342e6e35c0feced6d95d90b66fc5d5703",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "short_triple",
+      "path": "fixtures/short_triple.json",
+      "sha256": "6dd117fb68e08e75b67d15ecf9e52ef83c1a08c1fa5b7e0612c9fd8d65326677",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "long_triple",
+      "path": "fixtures/long_triple.json",
+      "sha256": "911f1824573135c92e143852bfc13443db912d22c34900acf78feeaf7750c42e",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "missing_metadata",
+      "path": "fixtures/missing_metadata.json",
+      "sha256": "c99ad9b4460226cca474002a0487c314620fadc5f8d0906ed229ada01d7d7a70",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "unknown_field",
+      "path": "fixtures/unknown_field.json",
+      "sha256": "b0304feb53e5e2d1d3d189ad7b66df18bd901b3cbb3d0c4b942f80456d2c69fb",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "claimed_success",
+      "path": "fixtures/claimed_success.json",
+      "sha256": "0f336c9f104e5d5435bd5704f35cdad1e0a5a19ea5887a3a284c6c359e6735c9",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "claimed_cost",
+      "path": "fixtures/claimed_cost.json",
+      "sha256": "22b2b220fb3b4ab295cee96582e1660411d56517bf27750a0b1f62c83ea47545",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "few_terms",
+      "path": "fixtures/few_terms.json",
+      "sha256": "99da63d36628ac73bb11c5e36345ed06f4dafe931a87eaba517f9bd899d40c63",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "many_terms",
+      "path": "fixtures/many_terms.json",
+      "sha256": "b167f029531833fe04dd103bd82dec5dd2dc9281b157b8c5c3e0ee1f1fd43ff5",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "boolean_version",
+      "path": "fixtures/boolean_version.json",
+      "sha256": "0c046d79a67ff06799f85b6423e9b172e1a29e62476e887c45159b752e76cc99",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "boolean_degree",
+      "path": "fixtures/boolean_degree.json",
+      "sha256": "3df098957a16927b0d99a5a583da69a5b08e3feb59888cf6aa9d15e00995cc8d",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "float_modulus",
+      "path": "fixtures/float_modulus.json",
+      "sha256": "57cf32866def5b01f49ad250cebec35eb9b018afa87765c596fab50d716eb543",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "null_terms",
+      "path": "fixtures/null_terms.json",
+      "sha256": "bc00dc2bf501396d87ccd20175ccdaff300df07e744476d66bb3ddbbc8fd297b",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "object_triple",
+      "path": "fixtures/object_triple.json",
+      "sha256": "9d021434e59615606fdf32db08971d6dd6cdf094b01acecdc6268881765ec7fa",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "duplicate_key",
+      "path": "fixtures/duplicate_key.json",
+      "sha256": "3f5be43655c1fcccaae3a8cce7c99598fa25692ee2245ec49abee89870fc6e45",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "nested_duplicate_key",
+      "path": "fixtures/nested_duplicate_key.json",
+      "sha256": "a3518749abf5db038b9fdd3f131cd0775d1a213bfa1d4196bed7b8cfba5e9531",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "nan_mask",
+      "path": "fixtures/nan_mask.json",
+      "sha256": "1df5f8fd700da1914bbe32bf3d85106bdba2e687ef8f0c2c74a3c060b7f33da3",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "root_array",
+      "path": "fixtures/root_array.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "malformed_json",
+      "path": "fixtures/malformed_json.json",
+      "sha256": "86cc54391c010498d9a5999ac5f89ecc44677452ac75191f9aefd346230a5725",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "oversized",
+      "path": "fixtures/oversized.json",
+      "sha256": "3c583900cb566b7484f1fff094b7f855e9e5f8ed18250ab3c71920be4e6d01a9",
+      "expected_status": "invalid_certificate"
+    },
+    {
+      "name": "deep_nesting",
+      "path": "fixtures/deep_nesting.json",
+      "sha256": "7478f91c6ff85802489866cb68211c152830a58fa83043cd6e134cd50eff8125",
+      "expected_status": "invalid_certificate"
+    }
+  ],
+  "freeze_stage": "Fixtures materialized before checker implementation or execution. Expected semantic witnesses follow nonzero tensor-coefficient deltas and degree<12 reference products, without importing old code.",
+  "original_source_pins": {
+    "tower_multiplier.py": "74f56baf3428c26c3be4868b206718953d4ab83530d6fae918a53d4a357997b5",
+    "classical_results/tower_verification.json": "f4264432bc5b5fbcb758e4e96dc0840db7e3b94039384778d9f8fca82d74d704",
+    "classical_results/native_gf_comparison.json": "41e4844718a5061488b89f836efdc3684db2f52bfd7261531933f722645895eb"
+  }
+}
